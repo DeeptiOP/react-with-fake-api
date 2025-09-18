@@ -4,3 +4,19 @@
 
 /* small helper */
 .container{ max-width: 1200px; }
+
+/* Smooth color transitions for theme changes */
+html, body, #root {
+  height: 100%;
+}
+
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduce transition jank on initial paint */
+.no-transitions * {
+  transition: none !important;
+}

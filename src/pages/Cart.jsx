@@ -1,6 +1,7 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
 import CartItem from '../components/CartItem'
+import { formatINR } from '../utils/currency'
 
 export default function CartPage(){
   const { cart, getCartTotals } = useCart()
@@ -20,20 +21,20 @@ export default function CartPage(){
         </div>
       </div>
 
-      <aside className="bg-white p-4 rounded shadow">
+      <aside className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow border border-gray-200 dark:border-gray-700 transition-colors duration-300">
         <h2 className="text-xl font-semibold mb-2">Order Summary</h2>
         <div className="flex justify-between">
           <span>Subtotal</span>
-          <span>${subtotal.toFixed(2)}</span>
+          <span>{formatINR(subtotal * 10)}</span>
         </div>
         <div className="flex justify-between">
           <span>10% Discount</span>
-          <span>-${discount.toFixed(2)}</span>
+          <span>-{formatINR(discount * 10)}</span>
         </div>
-        <hr className="my-3" />
+        <hr className="my-3 border-gray-200 dark:border-gray-700" />
         <div className="flex justify-between font-bold text-lg">
           <span>Total</span>
-          <span>${total.toFixed(2)}</span>
+          <span>{formatINR(total * 10)}</span>
         </div>
       </aside>
     </div>
