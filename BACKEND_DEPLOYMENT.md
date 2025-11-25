@@ -49,6 +49,7 @@
    | NODE_ENV | production |
    | BCRYPT_ROUNDS | 10 |
    | PORT | 5000 |
+   | CORS_ORIGIN | https://your-netlify-site.netlify.app |
 
 6. **Deploy**:
    - Click "Create Web Service"
@@ -148,6 +149,10 @@ curl https://online-store-backend.onrender.com/api/admin/dashboard/stats \
    app.use(cors({
      origin: 'https://your-netlify-domain.netlify.app'
    }));
+   ```
+   - Or set the `CORS_ORIGIN` environment variable in Render to your Netlify site URL (recommended), e.g.:
+   ```
+   CORS_ORIGIN=https://your-netlify-site.netlify.app
    ```
 
 5. **Monitor Logs**
