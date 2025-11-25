@@ -6,8 +6,9 @@ services:
     region: oregon
     root: server
 
-    buildCommand: npm install
-    startCommand: npm run start
+    # Ensure server dependencies are installed even if Render runs commands from repo root
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm run start
 
     envVars:
       - key: MONGODB_URI
