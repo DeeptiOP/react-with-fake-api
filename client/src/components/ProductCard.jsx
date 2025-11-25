@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProductCard({ product, onAddToCart, isInCart }) {
+export default function ProductCard({ product, onAddToCart, isInCart, onToggleWishlist, isInWishlist }) {
   return (
     <div className="relative bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-900 rounded-xl shadow-lg overflow-hidden flex flex-col transition-transform duration-200 hover:scale-105 hover:shadow-2xl">
       {/* Gradient accent bar */}
@@ -15,10 +15,10 @@ export default function ProductCard({ product, onAddToCart, isInCart }) {
         </p>
       </div>
 
-      <div className="p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+      <div className="p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex gap-2">
         <button
           onClick={() => onAddToCart(product)}
-          className={`w-full px-3 py-2 rounded-md text-sm font-semibold transition-colors duration-150 hover:bg-indigo-700 focus:outline-none ${
+          className={`flex-1 px-3 py-2 rounded-md text-sm font-semibold transition-colors duration-150 hover:bg-indigo-700 focus:outline-none ${
             isInCart
               ? 'bg-gray-300 text-gray-700 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed'
               : 'bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-700 dark:text-gray-100 dark:hover:bg-indigo-800'
@@ -26,6 +26,19 @@ export default function ProductCard({ product, onAddToCart, isInCart }) {
           disabled={isInCart}
         >
           {isInCart ? 'Added' : 'Add to cart'}
+        </button>
+
+        <button
+          onClick={() => onToggleWishlist && onToggleWishlist(product)}
+          className={`px-3 py-2 rounded-md text-sm font-semibold transition-colors duration-150 focus:outline-none ${
+            isInWishlist
+              ? 'bg-red-600 text-white hover:bg-red-700'
+              : 'bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100'
+          }`}
+          aria-pressed={!!isInWishlist}
+          title={isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
+        >
+          {isInWishlist ? '♥ Wishlisted' : '♡ Wishlist'}
         </button>
       </div>
     </div>

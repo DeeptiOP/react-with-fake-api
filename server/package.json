@@ -1,0 +1,27 @@
+{
+  "name": "fakestore-cart-server",
+  "version": "1.0.0",
+  "description": "Backend server with authentication for fakestore-cart-app",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.5.0",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.0",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
