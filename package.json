@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "scripts": {
     "start": "cd server && npm run start",
-    "build": "cd server && npm install && cd .. && cd client && npm install && npm run build"
+    "build": "cd server && npm install && cd .. && cd client && npm install && npm run build",
+    "postinstall": "cd server && npm install"
   }
-}
