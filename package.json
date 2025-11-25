@@ -7,3 +7,5 @@
     "build": "cd server && npm install && cd .. && cd client && npm install && npm run build",
     "postinstall": "cd server && npm install"
   }
+
+}
