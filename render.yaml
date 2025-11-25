@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: online-store-backend
+    env: node
+    plan: free
+    region: oregon
+    root: server
+
+    buildCommand: npm install
+    startCommand: npm run start
+
+    envVars:
+      - key: MONGODB_URI
+        prompt: false
+      - key: JWT_SECRET
+        prompt: false
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: NODE_ENV
+        value: production
+      - key: BCRYPT_ROUNDS
+        value: "10"
