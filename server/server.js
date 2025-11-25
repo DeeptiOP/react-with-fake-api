@@ -30,7 +30,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
 
-// Serve frontend in production if it exists (client build)
+// NOTE: static frontend serving removed for Render backend-only deployment
+// If you later want the backend to serve the frontend, uncomment and adjust
+// the block below and ensure `client/dist` is present in production.
+/*
 if (process.env.NODE_ENV === 'production') {
   const clientDist = path.join(__dirname, '..', 'client', 'dist');
   app.use(express.static(clientDist));
@@ -38,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(clientDist, 'index.html'));
   });
 }
+*/
 
 // Health check
 app.get('/api/health', (req, res) => {
