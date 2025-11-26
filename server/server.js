@@ -7,6 +7,7 @@ import connectDB from './config/database.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import newsletterRoutes from './routes/newsletterRoutes.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 dotenv.config();
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 
 // NOTE: static frontend serving removed for Render backend-only deployment
 // If you later want the backend to serve the frontend, uncomment and adjust

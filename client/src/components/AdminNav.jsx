@@ -33,6 +33,12 @@ export default function AdminNav() {
               >
                 Activity
               </Link>
+              <Link
+                to="/admin/newsletter"
+                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-purple-600 transition"
+              >
+                Newsletter
+              </Link>
             </div>
           </div>
 

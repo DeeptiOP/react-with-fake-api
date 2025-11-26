@@ -11,9 +11,17 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import ShopPage from './pages/ShopPage';
+import ContactPage from './pages/ContactPage';
+import ShippingPage from './pages/ShippingPage';
+import ReturnsPage from './pages/ReturnsPage';
+import FAQPage from './pages/FAQPage';
+import TrackOrderPage from './pages/TrackOrderPage';
+import ProductPage from './pages/ProductPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminActivity from './pages/admin/AdminActivity';
+import AdminNewsletter from './pages/admin/AdminNewsletter';
 import ProfilePage from './pages/ProfilePage';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -27,6 +35,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/shipping" element={<ShippingPage />} />
+          <Route path="/returns" element={<ReturnsPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/track-order" element={<TrackOrderPage />} />
 
           {/* Protected routes */}
           <Route
@@ -58,6 +73,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             element={
               <ProtectedRoute requiredRole="admin">
                 <AdminActivity />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/newsletter"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminNewsletter />
               </ProtectedRoute>
             }
           />
