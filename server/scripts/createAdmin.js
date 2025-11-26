@@ -6,8 +6,12 @@ dotenv.config();
 
 async function createAdmin() {
   try {
-    // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fakestore-app');
+    // Connect to MongoDB (requires MONGODB_URI env var to be set)
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not set.');
+    }
+    await mongoose.connect(mongoUri);
     console.log('Connected to MongoDB');
 
     // Check if admin already exists

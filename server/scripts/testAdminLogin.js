@@ -7,7 +7,11 @@ dotenv.config();
 
 async function testAdminLogin() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fakestore-app');
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI environment variable is not set.');
+    }
+    await mongoose.connect(mongoUri);
     console.log('✓ Connected to MongoDB');
 
     // Find admin user
