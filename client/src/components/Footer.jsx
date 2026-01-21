@@ -14,7 +14,7 @@ export default function Footer() {
     if (!val) return setError('Please enter a valid email');
     setLoading(true);
     try {
-      const apiBase = import.meta.env.VITE_API_URL || 'https://online-store-with-api-1.onrender.com/api';
+      const apiBase = import.meta.env.VITE_API_URL || 'https://react-with-fake-api.onrender.com/api';
       const res = await fetch(`${apiBase}/newsletter/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

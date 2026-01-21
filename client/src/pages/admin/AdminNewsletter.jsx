@@ -13,7 +13,7 @@ export default function AdminNewsletter() {
       setError(null);
       try {
         const token = localStorage.getItem('token');
-        const apiBase = import.meta.env.VITE_API_URL || 'https://online-store-with-api-1.onrender.com/api';
+        const apiBase = import.meta.env.VITE_API_URL || 'https://react-with-fake-api.onrender.com/api';
         const res = await fetch(`${apiBase}/newsletter`, {
           headers: { Authorization: `Bearer ${token}` },
         });
