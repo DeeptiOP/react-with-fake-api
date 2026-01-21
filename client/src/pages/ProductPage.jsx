@@ -12,7 +12,7 @@ export default function ProductPage(){
     async function fetchProduct(){
       setLoading(true);
       try{
-        const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const res = await fetch(`https://dummyjson.com/products/${id}`);
         if(!res.ok) throw new Error('Failed to fetch product');
         const data = await res.json();
         if(mounted) setProduct(data);
@@ -31,7 +31,7 @@ export default function ProductPage(){
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-6">
-        <img src={product.image} alt={product.title} className="w-full md:w-1/3 object-contain" />
+        <img src={product.thumbnail || product.image} alt={product.title} className="w-full md:w-1/3 object-contain" />
         <div className="flex-1">
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
           <div className="text-indigo-600 font-bold text-xl mb-4">${product.price}</div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import Navbar from '../components/Navbar';
 import ProductCard from '../components/ProductCard';
-import FeaturedProductCard from '../components/FeaturedProductCard';
 import CartModal from '../components/CartModal';
 import Footer from '../components/Footer';
 import userService from '../services/userService';
@@ -24,14 +23,15 @@ function HomePage() {
     async function fetchProducts() {
       setLoading(true);
       try {
-        const res = await fetch('https://fakestoreapi.com/products');
+        const res = await fetch('https://dummyjson.com/products?limit=0');
         if (!res.ok) throw new Error('Failed to fetch products');
-        const data = await res.json();
+        const json = await res.json();
+        const data = json.products || [];
         if (!aborted) {
           setProducts(data);
           if (data && data.length > 0) {
             // take up to first 5 images for the hero slideshow
-            setHeroImages(data.slice(0, 5).map((p) => p.image));
+            setHeroImages(data.slice(0, 5).map((p) => p.thumbnail));
             setHeroIndex(0);
           }
         }
@@ -262,7 +262,7 @@ function HomePage() {
               >
                 {featured.map((p) => (
                   <div key={p.id} className="flex-shrink-0 w-60">
-                    <FeaturedProductCard product={p} onAddToCart={handleAddToCart} isInCart={!!cart.find((c) => c.id === p.id)} onToggleWishlist={toggleWishlist} isInWishlist={!!wishlist.find((w) => (w.externalId && w.externalId === p.id) || (w.productId && w.productId.toString() === p.id))} />
+                    <ProductCard product={p} onAddToCart={handleAddToCart} isInCart={!!cart.find((c) => c.id === p.id)} onToggleWishlist={toggleWishlist} isInWishlist={!!wishlist.find((w) => (w.externalId && w.externalId === p.id) || (w.productId && w.productId.toString() === p.id))} />
                   </div>
                 ))}
               </div>

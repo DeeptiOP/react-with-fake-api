@@ -11,8 +11,6 @@ export default function ShopPage() {
   const [error, setError] = useState(null);
   const query = useQuery();
   let categoryQuery = (query.get('category') || '').toLowerCase();
-  // normalize some friendly category names to match fakestoreapi categories
-  if (categoryQuery === 'jewelry') categoryQuery = 'jewelery';
 
   useEffect(() => {
     let mounted = true;
@@ -20,9 +18,10 @@ export default function ShopPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch('https://fakestoreapi.com/products');
+        const res = await fetch('https://dummyjson.com/products?limit=0');
         if (!res.ok) throw new Error('Failed to fetch products');
-        const data = await res.json();
+        const json = await res.json();
+        const data = json.products || [];
         if (!mounted) return;
         setProducts(data || []);
       } catch (err) {

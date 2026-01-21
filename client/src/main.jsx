@@ -12,6 +12,8 @@ import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import ShopPage from './pages/ShopPage';
+import SearchResultsPage from './pages/SearchResultsPage';
+import CartPage from './pages/CartPage';
 import ContactPage from './pages/ContactPage';
 import ShippingPage from './pages/ShippingPage';
 import ReturnsPage from './pages/ReturnsPage';
@@ -36,6 +38,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/search" element={<SearchResultsPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/shipping" element={<ShippingPage />} />

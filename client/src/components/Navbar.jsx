@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import SearchBar from './SearchBar';
 
 export default function Navbar({ cartCount, onOpenCart, wishlistCount = 0 }) {
   const [isDark, setIsDark] = useState(false);
@@ -37,19 +38,24 @@ export default function Navbar({ cartCount, onOpenCart, wishlistCount = 0 }) {
             <div className="ml-4 text-sm text-gray-500 hidden sm:block">Online Shop</div>
           </div>
 
+          {/* Search Bar */}
+          <div className="hidden md:block flex-1 mx-8">
+            <SearchBar />
+          </div>
+
           <div className="flex items-center space-x-4">
             {authenticated ? (
               <>
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={onOpenCart}
+                  <Link
+                    to="/cart"
                     className="relative inline-flex items-center px-3 py-1.5 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none dark:bg-indigo-700 dark:hover:bg-indigo-800"
                   >
                     Cart
                     <span className="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-semibold leading-none text-indigo-800 bg-indigo-100 rounded-full dark:text-indigo-100 dark:bg-indigo-900">
                       {cartCount}
                     </span>
-                  </button>
+                  </Link>
 
                   <Link
                     to="/profile"
