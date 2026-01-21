@@ -7,8 +7,8 @@ services:
     root: server
 
     # Ensure server dependencies are installed even if Render runs commands from repo root
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm run start
+    buildCommand: npm install
+    startCommand: npm run start
 
     envVars:
       - key: MONGODB_URI
@@ -21,3 +21,5 @@ services:
         value: production
       - key: BCRYPT_ROUNDS
         value: "10"
+      - key: CORS_ORIGIN
+        value: https://react-with-fake-api.netlify.app
